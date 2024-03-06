@@ -3,15 +3,16 @@ let data = []
 const submitComment =(event) =>{
     event.preventDefault();
 
-    const author = inputAuthor.value;
-    const comment = inputComment.value;
+    const author = document.getElementById('inputAuthor').value;
+    const comment = document.getElementById('inputComment').value;
 
     data.push({author:author, comment:comment})
 
     console.log(data)
-}
-const formComentario = document.getElementById('formComentario') 
-formComentario.addEventListener("submit",submitComment)
+};
+
+const formComentario = document.getElementById('formComment') 
+formComentario.addEventListener("submit",submitComment);
 
 const loadComment = () =>{
 
