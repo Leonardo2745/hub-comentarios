@@ -1,40 +1,54 @@
-.comentarios {
-    text-align: center;
+body {
+    font-family: Arial, sans-serif;
+}
+
+.comments {
+    text-align: left;
     width: 400px;
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
-    background-color: rgb(220, 220, 220);
-    font-size: 20px;
-    color: rgb(38, 37, 37);
+    color: rgb(12, 12, 12);
     font-weight: bolder;
-    border-radius: 14px;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    background-color: rgb(207, 207, 207);
     
 }
 
-.comentarios label{
+.comments *{
     display: block;
-    margin-bottom: 20px;
-    
-}
-.comentarios input{
-    margin-bottom: 12px;
-    width: 50%;
 }
 
-
-.comentarios> * {
-    padding: 10px auto;
-    margin: 20px auto;
-}
-
-
-
-#form-comentario textarea {
-    background-color: rgb(87, 87, 87);
-    color: rgb(255, 255, 255);
+.comments label {
     margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#form-comentario textarea, input {
+    display: block;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+    width: 90%;
     
 }
-    
+
+#form-comentario .btn-submit{
+    margin-top: 25px;
+    padding: 10px;
+    width: 100px;
+    border-radius: 12px;
+
+}
+
+#form-comentario form{
+    margin: 10px auto 0px auto;
+    padding: 10px auto 0px auto;
+}
+
+.secComment{
+    justify-content: left;
+}
 

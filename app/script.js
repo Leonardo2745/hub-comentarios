@@ -1,39 +1,41 @@
 let data = []
 
-const submitComment =(event) =>{
+const submitComment = (event) => {
     event.preventDefault();
 
-    const author = document.getElementById('inputAuthor').value;
-    const comment = document.getElementById('inputComment').value;
+    const author = inputAuthor.value;
+    const comment = inputComment.value;
 
-    data.push({author:author, comment:comment})
-
+    data.push({ author: author, comment: comment })
     console.log(data)
-};
 
-const formComentario = document.getElementById('formComment') 
-formComentario.addEventListener("submit",submitComment);
+    loadComment()
+}
 
-const loadComment = () =>{
+const formComentario = document.getElementById('formComment')
+formComentario.addEventListener("submit", submitComment)
 
-    if (data){
+const loadComment = () => {
+    // Dados carregados da API
+    if (data) {
         displayComment();
     }
 }
 
-const displayComment = () =>{
+const displayComment = () => {
     const body = document.getElementsByTagName('body')[0];
-    console.log(body)
-    data.forEach(element => {
+
+    data.forEach(elemento => {
         const divDisplay = document.createElement('div');
-    divDisplay.className = 'comentarios'
-    divDisplay.innerHTML =`
-    <strong>${elemento.author}</strong>
-    <p>${elemento.comment}</p>
-    `
-    body.appendChild(divDisplay);
-
+        divDisplay.className = 'comentarios'
+        divDisplay.innerHTML = `
+        <strong>
+        <span class="badge text-bg-secondary">${elemento.author}</span>
+        </strong>
+        <p>${elemento.comment}</p>
+        `
+        body.appendChild(divDisplay);
     })
-}
 
-loadComment()
+
+}
