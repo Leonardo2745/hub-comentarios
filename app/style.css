@@ -1,0 +1,40 @@
+.comentarios {
+    text-align: center;
+    width: 400px;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgb(220, 220, 220);
+    font-size: 20px;
+    color: rgb(38, 37, 37);
+    font-weight: bolder;
+    border-radius: 14px;
+    
+}
+
+.comentarios label{
+    display: block;
+    margin-bottom: 20px;
+    
+}
+.comentarios input{
+    margin-bottom: 12px;
+    width: 50%;
+}
+
+
+.comentarios> * {
+    padding: 10px auto;
+    margin: 20px auto;
+}
+
+
+
+#form-comentario textarea {
+    background-color: rgb(87, 87, 87);
+    color: rgb(255, 255, 255);
+    margin-top: 10px;
+    
+}
+    
+
