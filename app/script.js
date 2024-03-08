@@ -5,12 +5,23 @@ const submitComment = (event) => {
 
   const author = inputAuthor.value;
   const comment = inputComment.value;
+  const dataT = commentTime();
 
   data.push({ author: author, comment: comment });
   console.log(data);
 
   loadComment();
 };
+
+const commentTime = () =>{
+  const data = new Date();
+  const format = {day: 'numeric', month: 'short', hour: 'numeric'}
+  const dataT = `${data.toLocaleString('pt-BR', format)} horas`
+
+  return dataT
+}
+
+
 
 const formComentario = document.getElementById("formComment");
 formComentario.addEventListener("submit", submitComment);
@@ -27,9 +38,9 @@ const displayComment = () => {
 divFeed.innerHTML = ``;
   data.forEach((item) => {
     const divDisplay = document.createElement("div");
-    divDisplay.className = "comentarios";
+    divDisplay.className = "d-flex text-body-secondary pt-3";
     divDisplay.innerHTML = ` 
-        <div class="d-flex text-body-secondary pt-3">
+       
         <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
             preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -40,9 +51,9 @@ divFeed.innerHTML = ``;
         <div>
         <p class="pb-3 mb-0 small lh-sm border-bottom" id="showComments">
             <strong class="d-block text-gray-dark">@${item.author}</strong>
-            ${item.comment}
+            ${item.comment}<div id="dateCommit">${commentTime()}</div>
         </p>
-    </div>
+   
         `;
     divFeed.appendChild(divDisplay);
   });

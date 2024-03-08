@@ -52,3 +52,7 @@ body {
     justify-content: left;
 }
 
+#dateCommit{
+   font-size: 12px;
+   text-align: center;
+}
