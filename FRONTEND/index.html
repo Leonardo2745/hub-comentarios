@@ -12,27 +12,35 @@
 
 <body>
     <!-- ADD NEW COMMENT -->
-    <div class="comments" id="form-comentario">
-        <h3><b>HUB DE COMENTÁRIOS</b></h3>
-        <form id="formComment">
-            <label for="autor">Digite o seu nome:</label>
-            <input type="text" name="autor" id="inputAuthor" required>
-            <label for="comentario">Digite seu comentário:</label>
-            <textarea name="comentario" id="inputComment" cols="30" rows="7" required></textarea>
-            <button type="submit" class="btn-submit"><b>Publicar</b></button>
-        </form>
-    </div>
     <!-- DISPLAY COMMENTS -->
-    <div class="comments my-3 p-3 bg-body rounded shadow-sm">
-        <h6 class="border-bottom pb-2 mb-0">Feed</h6>
-        <div id="comment-feed">
-            <div id="dateCommit">
-
+    <div class="container">
+        
+        <div class="row">
+            <div class="comments col" id="form-comentario">
+                <h3><b>HUB DE COMENTÁRIOS</b></h3>
+                <form id="formComment">
+                    <label for="autor">Digite o seu nome:</label>
+                    <input type="text" name="autor" id="inputAuthor" required>
+                    <label for="comentario">Digite seu comentário:</label>
+                    <textarea name="comentario" id="inputComment" cols="30" rows="7" required></textarea>
+                    <button type="submit" class="btn-submit"><b>Publicar</b></button>
+                </form>
             </div>
+
+        <div class="comments col">
+            <h3 class="border-bottom pb-2 mb-0"><b>Feed</b></h3>
+            <div id="comment-feed">
+                <div id="dateCommit">
+    
+                </div>
+            </div>
+            <small class="d-block text-end mt-3">
+                <a href="#" style="color: darkblue;">All updates</a>
+            </small>
         </div>
-        <small class="d-block text-end mt-3">
-            <a href="#">All updates</a>
-        </small>
+
+    </div>
+
     </div>
 
 
