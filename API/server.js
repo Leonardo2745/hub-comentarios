@@ -1,10 +1,9 @@
-
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2')
-const cors = require ('cors')
+const cors = require('cors')
 require('dotenv').config()
+
 
 const server = express();
 
@@ -20,26 +19,25 @@ const db = mysql.createConnection({
     port: process.env.DB_PORT,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    database: process.env.DB_NAME
 })
 
-db.connect((err) =>{
-    if(err) return console.log(err);
-    console.log('Conectado com sucesso');
-   
-    });
+db.connect((err) => {
+    if (err) return console.log(err);
+    console.log('Conectado com sucesso!');
+})
 
-    server.get('/comment', (req, res) =>{
-        db.query('SELECT * FROM comment', (err, result) =>{
-            if(err) {
-                res.status(500).json({sucess: false, error:err})
-                return
-            }
-            res.json({sucess: true, comment: result})
-           
-        })
-    })
+server.get('/comment', (req, res) => {
+    db.query('SELECT * FROM comment', (err, results) => {
+        if (err) {
+            res.status(500).json({ success: false, error: 'Internal server error' });
+            return;
+        }
+
+        res.json({ success: true, comment: results });
+    });
+});
 
 server.listen(PORT, () =>{
-    console.log('O server está rodando em http://localhost:${PORT}');
-})
+    console.log(`O server está rodando em http:\\localhost:${PORT}`)
+} )
