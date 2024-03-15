@@ -6,4 +6,15 @@ const formatDate = (data) =>{
     return dataT
   }
   
+  function gerandoCor(){
+    var colors = '0123456789ABCDEF';
+    var cor = '#';
+
+    for (var i = 0; i < 6; i++ ) {
+        cor += colors[Math.floor(Math.random() * 16)];
+    }
+    return cor;
+}
+
+export { gerandoCor }
   export {formatDate}
