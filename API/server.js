@@ -45,7 +45,7 @@ server.get('/user', (req, res) => {
             return;
         }
 
-        res.json({ success: true, user: results });
+        res.json({ success: true, comment: results });
     });
 });
 
