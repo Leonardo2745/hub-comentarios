@@ -25,13 +25,19 @@ const db = mysql.createConnection({
 db.connect((err) => {
     if (err) return console.log(err);
     console.log('Conectado com sucesso!');
-})
+});
+
+server.post('/login',(req, res) => {
+  const {username, password} = req.body;
+  db.query('SELECT * FROM user WHERE username =? AND password =?', [username, password], (err, results) => {
+}
 
 server.get('/comment', (req, res) => {
     db.query('SELECT * FROM comment', (err, results) => {
         if (err) {
             res.status(500).json({ success: false, error: 'Internal server error' });
             return;
+            if(err)
         }
 
         res.json({ success: true, comment: results });
