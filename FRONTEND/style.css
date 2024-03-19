@@ -36,6 +36,16 @@ body {
     
 }
 
+#login-form *{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#Login-form * {
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 #form-comentario .btn-submit{
     margin-top: 25px;
     padding: 10px;
@@ -56,4 +66,17 @@ body {
 #dateCommit{
    font-size: 12px;
    text-align: center;
+}
+
+.disabled{
+    display:none;
+}
+
+.comments{
+    transition: all 0.5s ease;
+}
+
+.comments.disabled{
+    opacity: 0;
+    pointer-events: none;
 }

@@ -11,12 +11,21 @@
 </head>
 
 <body>
-    <!-- ADD NEW COMMENT -->
-    <!-- DISPLAY COMMENTS -->
-    <div class="container">
-        
+    <div class="container text-center">
         <div class="row">
-            <div class="comments col" id="form-comentario">
+            <div class="col">
+            <div class="comments card shadow" id="login-form">
+                <h2>Login</h2>
+                <form id="formLogin">
+                    <input type ="text" name="username" id="username" placeholder="Digite o seu login">
+                    <input type ="password" name="password" id="password" placeholder="Digite a sua senha"required>
+                    <button class="btn-submit" type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+        
+            
+            <div class="comments col disabled" id="form-comentario">
                 <h3><b>HUB DE COMENTÁRIOS</b></h3>
                 <form id="formComment">
                     <label for="autor">Digite o seu nome:</label>
