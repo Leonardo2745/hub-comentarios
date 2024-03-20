@@ -1,0 +1,63 @@
+class User{
+    constructor (id, username, password, firstname, lastname){
+        if (id !== undefined, username !== undefined, password !== undefined, firstname !== undefined, lastname !== undefined){
+            this.id = id;
+            this.username = username;
+            this.password = password;
+            this.firstname = firstname;
+            this.lastname = lastname;
+        }else if (username!== undefined, password!== undefined){
+            this.id = null;
+            this.username = username;
+            this.password = password;
+            this.firstname = null;
+            this.lastname = null;
+        }else {
+            this.id = null;
+            this.username = null;
+            this.password = null;
+            this.firstname = null;
+            this.lastname = null;
+        }
+            
+    }
+
+    getId(){
+        return this.id;
+    }
+
+    setId(){
+        this.id = id;
+    }
+
+
+    getUsername(){
+        return this.username;
+    }
+
+    setUsername(value){
+        this.username = username;
+    }
+
+    getPassword(){
+        return this.password;
+    }
+
+    setPassword(){
+        this.password = password;
+    }
+    getFirstname(){
+        return this.firstname;
+    }
+    setFirstname(value){
+        this.firstname = this.firstname;
+    }
+    getLastname(){
+        return this.lastname;
+    }
+    setLastname(value){
+        this.lastname = this.lastname;
+    }
+}
+
+export { User }

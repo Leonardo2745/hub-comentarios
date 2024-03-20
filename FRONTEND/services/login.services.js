@@ -14,7 +14,7 @@ const loginService = {
         .then(response => response.json())
         .then(data => {
           if (data.success) {
-            resolve(data.comment);
+            resolve(data.user);
           } else {
             reject(data.error);
           }

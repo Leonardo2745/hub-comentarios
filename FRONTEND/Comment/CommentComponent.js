@@ -1,6 +1,6 @@
 import { formatDate, corClara, corEscura } from "../utils.js";
 import { CommentService } from '../services/comment.services.js'
-import { Comment } from "../models/comment.model.js";
+import { Comment } from "./models/comment.model.js";
 
 
 const getInputComment = () => {
