@@ -26,4 +26,4 @@ const loginService = {
   },
 };
 
-export {CommentService}
+export {loginService}
