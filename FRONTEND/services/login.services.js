@@ -2,7 +2,6 @@ const URL_API = "http://localhost:7000";
 
 const LoginService = {
   apiAuthUser: async (user) => {
-    console.log("chegou")
     return new Promise((resolve, reject) => {
       fetch(`${URL_API}/login`,{
           method: 'POST',
