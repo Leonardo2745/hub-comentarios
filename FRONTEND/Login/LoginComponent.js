@@ -1,5 +1,5 @@
 import { User } from "../Comment/models/user.model.js";
-import { loginService } from "../services/login.services.js";
+import { LoginService } from "../services/login.services.js";
 
 const getLoginInputs = () =>{
     return {
@@ -26,14 +26,14 @@ const handleLogin =(event) =>{
     const {username, password} = getLoginInputs();
     const user = new User(null, username.value, password.value)
 
-    loginService.apiAuthUser(user).then(result =>{
+    LoginService.apiAuthUser(user).then(result =>{
         console.log(result)
         user.setId(result.id);
         user.setFirstname(result.firstname);
         user.setLastname(result.lastname);
         handleShowHide();
     }).catch(error =>{
-        alert('Login inválido. Erro:${error.message')
+        alert(`Login inválido. Erro:${error.message}`)
     })
 
 

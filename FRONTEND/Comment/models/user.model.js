@@ -1,5 +1,6 @@
 class User{
     constructor (id, username, password, firstname, lastname){
+       
         if (id !== undefined, username !== undefined, password !== undefined, firstname !== undefined, lastname !== undefined){
             this.id = id;
             this.username = username;
@@ -26,7 +27,7 @@ class User{
         return this.id;
     }
 
-    setId(){
+    setId(id){
         this.id = id;
     }
 
@@ -35,7 +36,7 @@ class User{
         return this.username;
     }
 
-    setUsername(value){
+    setUsername(username){
         this.username = username;
     }
 
@@ -43,20 +44,20 @@ class User{
         return this.password;
     }
 
-    setPassword(){
+    setPassword(password){
         this.password = password;
     }
     getFirstname(){
         return this.firstname;
     }
-    setFirstname(value){
-        this.firstname = this.firstname;
+    setFirstname(firstname){
+        this.firstname = firstname;
     }
     getLastname(){
         return this.lastname;
     }
-    setLastname(value){
-        this.lastname = this.lastname;
+    setLastname(lastname){
+        this.lastname = lastname;
     }
 }
 
