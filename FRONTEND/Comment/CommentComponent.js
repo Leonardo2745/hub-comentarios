@@ -3,6 +3,7 @@ import { CommentService } from '../services/comment.services.js'
 import { Comment } from "./models/comment.model.js";
 
 
+
 const getInputComment = () => {
     return {
         author: document.getElementById('inputAuthor'),
@@ -85,4 +86,4 @@ const CommentComponent = {
     }
 }
 
-export { CommentComponent }
+export { CommentComponent, setInputComment }
