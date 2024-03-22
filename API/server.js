@@ -54,6 +54,20 @@ server.get('/comment', (req, res) => {
         res.json({ success: true, comment: results });
     });
 });
+
+server.post('/new-comment',(req, res) =>{
+    const {author, comment_text}= req.body;
+
+    db.query('INSERT INTO comment (author, comment_text) VALUES (?, ?)', [author, comment_text], (err, result) =>{
+        if(err) {
+            res.status(500).json({ success: false, error: 'Internal server error' });
+            return;
+        }
+        res.json({ success: true});
+    })
+})
+
+
 server.get('/user', (req, res) => {
     db.query('SELECT * FROM user', (err, results) => {
 
