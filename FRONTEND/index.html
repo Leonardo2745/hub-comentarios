@@ -11,45 +11,49 @@
 </head>
 
 <body>
-    <div class="container text-center">
+    <div class="container">
         <div class="row">
             <div class="col">
-            <div class="comments card shadow" id="login-form">
-                <h2>Login</h2>
-                <form id="formLogin">
-                    <input type ="text" name="username" id="username" placeholder="Digite o seu login">
-                    <input type ="password" name="password" id="password" placeholder="Digite a sua senha"required>
-                    <button class="btn-submit" type="submit">Enviar</button>
-                </form>
-            </div>
-        </div>
-        
-            
-            <div class="comments  disabled" id="form-comentario">
-                <h3><b>HUB DE COMENTÁRIOS</b></h3>
-                <form id="formComment">
-                    <label for="autor">Digite o seu nome:</label>
-                    <input type="text" name="autor" id="inputAuthor" required>
-                    <label for="comentario">Digite seu comentário:</label>
-                    <textarea name="comentario" id="inputComment" cols="30" rows="7" required></textarea>
-                    <button type="submit" class="btn-submit"><b>Publicar</b></button>
-                </form>
-            </div>
-
-        <div class="comments col">
-            <h3 class="border-bottom pb-2 mb-0"><b>Feed</b></h3>
-            <div id="comment-feed">
-                <div id="dateCommit">
-    
+                <!-- LOGIN FORM -->
+                <div class="comments card shadow" id="login-form">
+                    <div class="styleFeed">
+                    <h2><b>Login</b></h2>
+                    <br>
+                    <form id="formLogin">
+                        <input type="text" name="username" id="username" placeholder="seu login aqui..." required>
+                        <input type="password" name="password" id="password" placeholder="senha..." required>
+                        <button class="btn-submit btn btn-dark my-2" type="submit"> Enviar </button>
+                    </form>
+                </div>
+                </div>
+                <!--NEW COMMENTS -->
+                <div class="comments shadow disabled" id="form-comentario">
+                    <div class="styleFeed">
+                    <h3><b>HUB DE COMENTÁRIOS</b></h3>
+                    <form id="formComment">
+                        <label for="autor">Autor</label>
+                        <input type="text" name="autor" id="inputAuthor" required>
+                        <label for="comentario">Digite seu comentário</label>
+                        <textarea name="comentario" id="inputComment" cols="30" rows="10" required></textarea>
+                        <button type="submit" class="btn-submit btn btn-dark my-2">Enviar</button>
+                    </form>
+                    </div>
                 </div>
             </div>
-            <small class="d-block text-end mt-3">
-                <a href="#" style="color: darkblue;">All updates</a>
-            </small>
+            <!--FEED: DISPLAY COMMENTS -->
+            <div class="comments col shadow">
+                <div class="styleFeed">
+                <h6 class="border-bottom "><b>Feed</b></h6>
+                <div id="comment-feed">
+
+                </div>
+                <small class="d-block text-end mt-3">
+                    <a href="#">All updates</a>
+                </small>
+
+            </div>
+            </div>
         </div>
-
-    </div>
-
     </div>
 
 
