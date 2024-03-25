@@ -81,3 +81,12 @@ body {
     opacity: 0;
     pointer-events: none;
 }
+
+#comment-feed{
+    max-height: 60vh;
+    max-width: 60vh;
+    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
+}
