@@ -11,19 +11,23 @@
 </head>
 
 <body>
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Usuário
-        </button>
-        <nav>
-            <ul class="dropdown-menu">
-                <button class="dropdown-item" id="show-user-data-btn">
-                    Meus Dados
-                </button>
-                <button class="dropdown-item" id="logout-btn">Sair</button>
-            </ul>
-        </nav>
-    </div>
+    <header>
+        <!-- USER PROFILE -->
+       <div id="user-profile" class="flex-shrink-0 dropdown m-2 disabled">
+           <a id="user-profile-title" href="#" class="d-flex flex-row link-body-emphasis text-decoration-none " data-bs-toggle="dropdown"
+               aria-expanded="false">
+               
+           </a>
+           <ul class="dropdown-menu text-small shadow">
+               <li><a class="dropdown-item" href="#" id="btnMeusDados">Meus dados</a></li>
+               <li>
+                   <hr class="dropdown-divider">
+               </li>
+               <li><a class="dropdown-item" id="btnSair" href="#">Sair</a></li>
+           </ul>
+       </div>
+   </header>
+   
 
 
     <div class="container">
