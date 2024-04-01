@@ -45,7 +45,7 @@ server.post('/login', (req, res) => {
 })
 
 server.get('/comment', (req, res) => {
-    db.query('SELECT * FROM comment', (err, results) => {
+    db.query('SELECT comment.id, user.firstname as author, comment.comment_text, comment.updated_at FROM `comment-hub`.comment INNER JOIN user ON comment.userId = user.id ORDER BY comment.updated_at DESC;', (err, results) => {
         if (err) {
             res.status(500).json({ success: false, error: 'Internal server error' });
             return;
@@ -55,7 +55,7 @@ server.get('/comment', (req, res) => {
     });
 });
 
-server.post('/new-comment',(req, res) =>{
+server.post('/comment',(req, res) =>{
     const {author, comment_text}= req.body;
 
     db.query('INSERT INTO comment (author, comment_text) VALUES (?, ?)', [author, comment_text], (err, result) =>{

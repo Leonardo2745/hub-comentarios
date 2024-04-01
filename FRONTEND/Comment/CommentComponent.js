@@ -72,7 +72,7 @@ const displayComment = (comments) => {
             </svg>
             <div><p class="pb-3 mb-0 small lh-sm text-gray-dark">
                 <strong class="d-block text-gray-dark">@${item.getAuthor()}
-                <span class="date-style text-primary  text-start">${formatDate(item.getCreatedAt())}</span>
+                <span class="date-style text-primary  text-start">${formatDate(item.getUpdatedAt())}</span>
                 </strong>
                 <span class="text-center">
                 ${item.getComment()}
