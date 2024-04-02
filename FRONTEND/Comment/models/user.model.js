@@ -1,63 +1,64 @@
-class User{
-    constructor (id, username, password, firstname, lastname){
-       
-        if (id !== undefined, username !== undefined, password !== undefined, firstname !== undefined, lastname !== undefined){
+class User {
+    constructor(id, username, password, firstname, lastname) {
+        if (id !== undefined, username !== undefined, password !== undefined, firstname !== undefined, lastname !== undefined) {
             this.id = id;
             this.username = username;
             this.password = password;
             this.firstname = firstname;
             this.lastname = lastname;
-        }else if (username!== undefined, password!== undefined){
+
+        }  else if (id !== undefined, username !== undefined, firstname !== undefined, lastname !== undefined) {
+            this.id = id;
+            this.username = username;
+            this.password = null;
+            this.firstname = firstname;
+            this.lastname = lastname;
+
+        }else if (username !== undefined, password !== undefined) {
             this.id = null;
             this.username = username;
             this.password = password;
             this.firstname = null;
             this.lastname = null;
-        }else {
+
+        } else {
             this.id = null;
             this.username = null;
             this.password = null;
             this.firstname = null;
             this.lastname = null;
         }
-            
     }
 
-    getId(){
+    getId() {
         return this.id;
     }
-
-    setId(id){
-        this.id = id;
+    
+    setId(value) {
+        this.id = value;
     }
 
-
-    getUsername(){
+    getUsername() {
         return this.username;
     }
-
-    setUsername(username){
-        this.username = username;
+    setUsername(value) {
+        this.username = value;
     }
 
-    getPassword(){
-        return this.password;
+    setPassword(value) {
+        this.password = value;
     }
-
-    setPassword(password){
-        this.password = password;
-    }
-    getFirstname(){
+    getFirstname() {
         return this.firstname;
     }
-    setFirstname(firstname){
-        this.firstname = firstname;
+    setFirstname(value) {
+        this.firstname = value;
     }
-    getLastname(){
+    getLastname() {
         return this.lastname;
     }
-    setLastname(lastname){
-        this.lastname = lastname;
+    setLastname(value) {
+        this.lastname = value;
     }
 }
 
