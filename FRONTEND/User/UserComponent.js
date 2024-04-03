@@ -64,7 +64,6 @@ const handleShowHideUser = () => {
     if (userDataTag.classList.contains('disabled')) {
         userDataTag.classList.remove('disabled');
         newCommentTag.classList.add('disabled');
-    console.log("CHEGOU")
         loadUserData();
     } else {
         userDataTag.classList.add('disabled');
@@ -72,9 +71,6 @@ const handleShowHideUser = () => {
     }
 }
 
-const sair =() =>{
-location.reload();
-}
  
 
 
@@ -84,7 +80,8 @@ const UserComponent = {
         const btnMeusDados = document.getElementById('btnMeusDados');
         btnMeusDados.addEventListener('click', handleShowHideUser);
         const btnSair = document.getElementById('btnSair');
-        btnSair.addEventListener('click', sair)
-}}
+        btnSair.addEventListener('click', handleShowHideUser);
+    }
+}
 
 export { UserComponent }
