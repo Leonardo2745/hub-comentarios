@@ -1,5 +1,5 @@
 import { StorageServices } from "../services/localStorage.services.js";
-import { randomColors } from "../../utils.js";
+import { corEscura } from "../utils.js";
 
 const loadUserData = () => {
 
@@ -27,7 +27,7 @@ const displayUserData = (user) => {
     userContent.innerHTML = ``
     const newDiv = document.createElement('div');
     newDiv.innerHTML = `
-    ${iconeUsuario(randomColors().dark)}
+    ${iconeUsuario(corEscura())}
     <div class="row d-inline-flex text-body-secondary rounded">
         <div class="col-4">
             <label class="form-label" for="user_name">Nome</label>
@@ -49,7 +49,7 @@ const displayUserData = (user) => {
         <div class="col-4">
             <label class="form-label" for="user_password">Senha</label>
             <input class="form-control" type="password" name="user_password" id="user_password"
-                value="${user.getPassword()}" readonly>
+                value="........" readonly>
         </div>
     </div>`
 
@@ -58,11 +58,13 @@ const displayUserData = (user) => {
 }
 
 const handleShowHideUser = () => {
+    console.log("asa")
     const userDataTag = document.getElementById('user-data');
     const newCommentTag = document.getElementById('form-comentario');
     if (userDataTag.classList.contains('disabled')) {
         userDataTag.classList.remove('disabled');
         newCommentTag.classList.add('disabled');
+    console.log("CHEGOU")
         loadUserData();
     } else {
         userDataTag.classList.add('disabled');
@@ -70,13 +72,19 @@ const handleShowHideUser = () => {
     }
 }
 
+const sair =() =>{
+location.reload();
+}
+ 
+
+
+
 const UserComponent = {
     run: () => {
         const btnMeusDados = document.getElementById('btnMeusDados');
         btnMeusDados.addEventListener('click', handleShowHideUser);
-        const btnSairMDados = document.getElementById('btnSairMDados');
-        btnSairMDados.addEventListener('click', handleShowHideUser);
-    }
-}
+        const btnSair = document.getElementById('btnSair');
+        btnSair.addEventListener('click', sair)
+}}
 
 export { UserComponent }
