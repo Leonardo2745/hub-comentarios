@@ -1,5 +1,6 @@
-import { StorageServices } from "../services/localStorage.services.js";
-import { corEscura } from "../utils.js";
+import { StorageServices } from "../../services/localStorage.service.js";
+import UserService from "../../services/user.services.js";
+import { randomColors } from "../../utils.js";
 
 const loadUserData = () => {
 
@@ -22,12 +23,17 @@ fill="none">
 `
 }
 
+
+
 const displayUserData = (user) => {
     const userContent = document.getElementById('user-content');
     userContent.innerHTML = ``
     const newDiv = document.createElement('div');
     newDiv.innerHTML = `
-    ${iconeUsuario(corEscura())}
+    <div>
+    <button id='btnMeusComentarios' class='btn-submit btn btn-dark my-2'>Meus Comentários</button>
+    </div>
+    ${iconeUsuario(randomColors().dark)}
     <div class="row d-inline-flex text-body-secondary rounded">
         <div class="col-4">
             <label class="form-label" for="user_name">Nome</label>
@@ -55,10 +61,48 @@ const displayUserData = (user) => {
 
     userContent.appendChild(newDiv)
 
+    const btnMeusComentarios = document.getElementById('btnMeusComentarios');
+    btnMeusComentarios.addEventListener('click', handleMeusComentarios);
+
+}
+
+const handleMeusComentarios = () => {
+    const userId = StorageServices.user.get().getId()
+    UserService.apiGetUserComments(userId).then(data =>{
+        displayUserComments(data)
+    }).catch(error =>{
+        alert(error.message)
+    })
+}
+
+const displayUserComments = (comments) => {
+    const divFeed = document.getElementById('comment-feed');
+    divFeed.innerHTML = `<h5 class="border-bottom pb-2 mb-0">Meus Comentários</h5>`
+    comments.forEach(item => {
+        const divDisplay = document.createElement('div');
+        divDisplay.className = 'd-flex text-body-secondary pt-3 border-bottom'
+        divDisplay.innerHTML = `
+            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
+                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>comentário</title>
+                <rect width="100%" height="100%" fill="#${randomColors().dark}"></rect>
+                <text x="35%" y="50%" fill="#${randomColors().light}"dy=".3em">${item.getAuthor().charAt(0)}</text>
+            </svg>
+            <p class="pb-3 mb-0 small lh-sm text-gray-dark">
+                <strong class="d-block text-gray-dark">@${item.getAuthor()}
+                <span class="date-style badge text-bg-secondary">${formatDate(item.getCreatedAt())}</span>
+                </strong>
+                <span class="comment">
+                ${item.getComment()}
+                </span>
+            </p>        
+        `
+        divFeed.appendChild(divDisplay);
+    })
 }
 
 const handleShowHideUser = () => {
-    console.log("asa")
     const userDataTag = document.getElementById('user-data');
     const newCommentTag = document.getElementById('form-comentario');
     if (userDataTag.classList.contains('disabled')) {
@@ -71,16 +115,12 @@ const handleShowHideUser = () => {
     }
 }
 
- 
-
-
-
 const UserComponent = {
     run: () => {
         const btnMeusDados = document.getElementById('btnMeusDados');
         btnMeusDados.addEventListener('click', handleShowHideUser);
-        const btnSair = document.getElementById('btnSair');
-        btnSair.addEventListener('click', handleShowHideUser);
+        const btnSairMDados = document.getElementById('btnSairMDados');
+        btnSairMDados.addEventListener('click', handleShowHideUser);
     }
 }
 
