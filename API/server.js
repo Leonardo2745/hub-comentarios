@@ -27,6 +27,13 @@ db.connect((err) => {
     console.log('Conectado com sucesso!');
 })
 
+server.get('/', (req, res) => {
+    res.send(`<h1>Só sabo que nada sebo</h1>
+    <ul>
+    <li><a href="http://localhost:7000/comment">Sabedoria profunda</li>
+    </ul>`);
+})
+
 server.post('/login', (req, res) => {
     const { username, password } = req.body;
     db.query('SELECT * FROM user WHERE username = ? AND password = ?',
