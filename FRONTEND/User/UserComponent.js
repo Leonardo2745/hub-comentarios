@@ -1,6 +1,6 @@
-import { StorageServices } from "../../services/localStorage.service.js";
-import UserService from "../../services/user.services.js";
-import { randomColors } from "../../utils.js";
+import { StorageServices } from "../services/localStorage.services.js";
+import  UserService from "../services/user.services.js";
+import { corEscura } from "../utils.js";
 
 const loadUserData = () => {
 
@@ -33,7 +33,7 @@ const displayUserData = (user) => {
     <div>
     <button id='btnMeusComentarios' class='btn-submit btn btn-dark my-2'>Meus Comentários</button>
     </div>
-    ${iconeUsuario(randomColors().dark)}
+    ${iconeUsuario(corEscura())}
     <div class="row d-inline-flex text-body-secondary rounded">
         <div class="col-4">
             <label class="form-label" for="user_name">Nome</label>

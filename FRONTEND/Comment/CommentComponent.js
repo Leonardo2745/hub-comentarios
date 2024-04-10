@@ -41,8 +41,8 @@ const submitComment = (event) => {
         console.log(error)
     });
 }
-
 const loadComment = () => {
+    // Dados carregados da API
     CommentService.apiGetComment().then(result => {
         const comments = result.map(
             (comment) => new Comment(comment.id, comment.userId, comment.author, comment.comment_text, comment.created_at, comment.updated_at)
@@ -54,8 +54,7 @@ const loadComment = () => {
     })
 }
 
-
-const displayUserComment = (comments) => {
+const displayComment = (comments) => {
   const divFeed = document.getElementById("comment-feed");
   divFeed.innerHTML = ``;
   comments.forEach((item) => {
