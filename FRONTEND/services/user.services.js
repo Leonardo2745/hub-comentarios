@@ -1,4 +1,4 @@
-import { mapComments } from "../Comment/models/comment.model.js";
+import { mapComments } from "../../FRONTEND/Comment/models/comment.model.js";
 
 const URL_API = "http://localhost:7000";
 
