@@ -1,14 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors')
-
-
 const server = express();
 
-
-server.use(bodyParser.urlencoded({ extended: true }));
-server.use(cors());
+server.use(bodyParser.urlencoded({ extended: true}));
 server.use(bodyParser.json());
+server.use(cors());
+
+const CommentRouter = require('./src/Routes/CommentRoute.js')
 
 server.use('/user', userRouter);
 
