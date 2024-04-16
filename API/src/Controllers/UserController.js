@@ -1,20 +1,23 @@
-
-const UserService = require("../Services/UserService.js")
+const UserService = require('../Services/UserService');
 
 const UserController = {
     getUsers: (req, res) =>{
         UserService.getDBUsers().
-        then( result =>{
+        then((result) =>{
             res.json({success: true, users: result});
-        }).catch(error =>{
-            res.status(500).json({success: false, error: `Error interno do servidor: ${error}`});
+        }).catch((error) =>{
+            res.status(500).json({success: false, error: error});
         })
     },
     getUserById: (req, res) =>{
         const userId = req.params.id;
-        UserService.getDBUserById
+        UserService.getDBUserById(userId).
+        then((result) =>{
+            res.json({success: true, user: result});
+        }).catch((error) =>{
+            res.status(500).json({success: false, error: error});
+        })
     }
-    
 }
 
 module.exports = UserController;

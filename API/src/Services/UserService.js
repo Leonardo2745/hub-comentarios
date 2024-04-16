@@ -1,33 +1,30 @@
 const db = require('../db_connect');
 
 const UserService = {
-    getDBUser: () =>{
+    getDBUsers: () => {
         return new Promise((resolve, reject) => {
-            db.query('SELECT * FROM user', (err, results) => {
-                if (err){
-                    reject(err)
+            db.query('SELECT * FROM user', (err, result) => {
+                if (err) {
+                    reject(err);
                 }
-                    resolve(result);
-                
-            });
+                resolve(result);
+            })
         })
     },
     getDBUserById(id) {
-        return new Promise ((resolve, reject)=>{
-            db.query('SELECT * FROM user WHERE id =?', [id], (error, result) =>{
-                if(error){
+        return new Promise((resolve, reject) => {
+            db.query('SELECT * FROM user WHERE id =?', [id], (error, result) => {
+                if (error) {
                     reject(error.message);
                 }
-                if(result.lenght > 0) {
+                if (result.length > 0) {
                     resolve(result);
-                } else {
-                    reject("Not found")
+
                 }
             })
         })
     }
+
 }
 
- module.exports = UserService;
-
-
+module.exports = UserService;
