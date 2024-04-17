@@ -1,44 +1,37 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors')
+const cors = require('cors');
+const db = require('./src/db_connect.js');
+require('dotenv').config();
+
 const server = express();
 
-server.use(bodyParser.urlencoded({ extended: true}));
+server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.use(cors());
 
-const CommentRouter = require('./src/Routes/CommentRoute.js')
+const CommentRouter = require('./src/Routes/CommentRoute.js');
+server.use('/comment', CommentRouter);
 
-server.use('/user', userRouter);
+const UserRouter = require('./src/Routes/UserRoute.js');
+server.use('/user', UserRouter);
+
+const LoginRouter = require('./src/Routes/LoginRoute.js');
+server.use('/session', LoginRouter);
 
 const PORT = 7000;
 
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+
+
+server.post('/comment', (req, res) => {
+    const { userId, comment_text } = req.body;
+    db.query('INSERT INTO comment (userId, comment_text) VALUES (?, ?)', [userId, comment_text], (err, result) => {
+        if (err) {
+            return res.status(500).json({ success: false, error: 'Internal server error' });
+        }
+        res.json({ success: true });
+    })
 })
-
-db.connect((err) => {
-    if (err) return console.log(err);
-    console.log('Conectado com sucesso!');
-})
-
-server.get('/', (req, res) => {
-    res.send(`<h1>Só sabo que nada sebo</h1>
-    <ul>
-    <li><a href="http://localhost:7000/comment">Get de comments</li>
-    <li><a href="http://localhost:7000/user">Get de user</li>
-    <li><a href="http://localhost:7000/user-comments/2">Get de user comments</li>
-
-
-    </ul>`);
-})
-
-const userRouter = require('./src/Routes/UserRoute')                         
-
 
 server.listen(PORT, () => {
     console.log(`O server está rodando em http://localhost:${PORT}`)

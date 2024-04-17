@@ -1,5 +1,5 @@
-import decodeJWT from '../lib/decodeJWT.js';
-import { User } from "../Comment/models/user.model.js";
+import decodeJWT from '../../lib/decodeJWT.js';
+import { User } from "../models/user.model.js";
 const URL_API = "http://localhost:7000/session";
 
 const LoginService = {
@@ -27,8 +27,21 @@ const LoginService = {
         });
     });
   },
+getUserSession: ()=> {
+  const token = sessionStorage.getItem('token');
+  if(token){
+    const payload = decodeJWT(token);
+    if (payload){
+      const user = new User(payload.id, payload.username, payload.password, payload.firstname, payload.lastname)
+      return user;
+    } else{
+      return null;
+    }
+  }
+},
+
 isLoggedIn: () =>{
-  const token = sessionStroage.getItem('token');
+  const token = sessionStorage.getItem('token');
   if(!token) {
     return false;
   }
@@ -39,22 +52,10 @@ isLoggedIn: () =>{
     }
     return true;
   }catch (error) {
+    console.log(error);
     
   }
 
-},
-getUserSession: ()=> {
-  const token = sessionStorage.getItem('token');
-  if(token){
-    const payload = decodeJWT('token');
-    if (payload){
-      const user = new User(payload.id, payload.username, payload.password, payload.firstname, payload.lastname)
-      console.log(user)
-      return user;
-    } else{
-      return null;
-    }
-  }
 }
 };
 export { LoginService }

@@ -1,10 +1,10 @@
-import { StorageServices } from "../services/localStorage.services.js";
 import  UserService from "../services/user.services.js";
-import { corEscura } from "../utils.js";
+import { randomColors } from "../utils.js";
+import { loadComment } from "./CommentComponent.js";
 
 const loadUserData = () => {
 
-    displayUserData(StorageServices.user.get())
+    //displayUserData()
 }
 
 const iconeUsuario = (avatarColor) => {
@@ -67,7 +67,7 @@ const displayUserData = (user) => {
 }
 
 const handleMeusComentarios = () => {
-    const userId = StorageServices.user.get().getId()
+    //const userId = StorageServices.user.get().getId()
     UserService.apiGetUserComments(userId).then(data =>{
         displayUserComments(data)
     }).catch(error =>{
@@ -112,6 +112,7 @@ const handleShowHideUser = () => {
     } else {
         userDataTag.classList.add('disabled');
         newCommentTag.classList.remove('disabled');
+        loadComment()
     }
 }
 

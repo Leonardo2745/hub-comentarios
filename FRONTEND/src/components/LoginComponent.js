@@ -1,7 +1,5 @@
-import { User } from "../Comment/models/user.model.js";
-import { LoginService } from "../services/comment.services.js";
-import { setCommentField } from "../Comment/CommentComponent.js";
-
+import { LoginService } from "../services/login.services.js";
+import { setCommentField } from "./CommentComponent.js";
 
 
 const getLoginInputs = () => {
@@ -16,11 +14,11 @@ const handleShowHide = () => {
   const loginTag = document.getElementById('login-form');
   const userProfile = document.getElementById('user-profile')
 
-  if (newCommentTag.classList.contains('disabled')) {
+  if (newCommentTag.classList.contains('disabled') && LoginService.isLoggedIn()) {
       newCommentTag.classList.remove('disabled');
       userProfile.classList.remove('disabled');
       loginTag.classList.add('disabled');
-  } else {
+  } else if(!LoginService.isLoggedIn()) {
       newCommentTag.classList.add('disabled');
       userProfile.classList.add('disabled');
       loginTag.classList.remove('disabled');
@@ -30,18 +28,18 @@ const handleShowHide = () => {
 const userProfileHeader = (name) => {
   const aLink = document.getElementById("user-profile-title");
   aLink.innerHTML = ``;
-  aLink.innerHTML = `<img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+  aLink.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYP98siKuGxUNC2o0YuaUV2wz4EPyTmnUaNSeaU5SBJQ&s" alt="mdo" width="32" height="32" class="rounded-circle">
   <p class="small lh-sm text-gray-dark">
       <strong class=" text-gray-dark dropdown-toggle">@${name}</strong>
   </p>`;
 }
 
 const setSignedUser = () =>{
-if (LoginService.isLoggedIn()) {
+  const user = LoginService.getUserSession()
+  userProfileHeader(user.getFirstname());
+  setCommentField(user);
+  handleShowHide();
 
-
-
-}
 }
 
 
@@ -54,10 +52,7 @@ const handleLogin = (event) => {
   }
   LoginService.apiAuthUser(usr).then(result => {
       alert(result)
-      const user = LoginService.getUserSession()
-      handleShowHide();
-      userProfileHeader(user.getFirstname());
-      setCommentField(user);
+      setSignedUser()
   }).catch(error => {
       alert(`Login inválido. Erro:${error.message}`)
   })
@@ -68,13 +63,8 @@ const LoginComponent = {
   run: () => {
       const formLogin = document.getElementById('formLogin');
       formLogin.addEventListener('submit', handleLogin);
-  }
+  },
 }
 
-const LoginComponent = {
-  run: () =>{
-    const
-  }
-}
 
-export { LoginComponent }
+export { LoginComponent, setSignedUser }

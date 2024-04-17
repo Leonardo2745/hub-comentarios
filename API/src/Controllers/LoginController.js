@@ -1,4 +1,4 @@
-const LoginService = require('../Services/LoginService')
+const LoginService = require('../Services/LoginService.js')
 
 const LoginController = {
     login: (req, res) =>{
