@@ -1,5 +1,4 @@
-const db = require('../db_connect.js');
-
+const db = require('../db_connect');
 const CommentService = {
     getDBComments: () => {
         return new Promise((resolve, reject) => {
@@ -42,7 +41,37 @@ const CommentService = {
                 }
             })
         })
+    },
+    addDBNewComment: ({ userId, comment_text }) => {
+        return new Promise((resolve, reject) => {
+            db.query('INSERT INTO comment (userId, comment_text) VALUES (?, ?)', [userId, comment_text], (err, result) => {
+                if (err) {
+                    reject('Error inserting comment');
+                }
+                resolve();
+            })
+        })
+    },
+    updateDBComment: ({ id, comment_text }) => {
+        return new Promise((resolve, reject) => {
+            db.query('UPDATE comment SET comment_text =? WHERE id =?', [comment_text, id], (err, result) => {
+                if (err) {
+                    reject('Error updating comment');
+                }
+                resolve();
+            })
+        })
+    },
+    deleteDBComment: (id) => {
+        return new Promise((resolve, reject) => {
+            db.query('DELETE FROM comment WHERE id =?', [id], (err, result) => {
+                if (err) {
+                    reject('Error deleting comment');
+                }
+                resolve();
+            })
+        })
     }
-}
 
+}
 module.exports = CommentService;
