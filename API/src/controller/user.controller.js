@@ -1,4 +1,4 @@
-const UserService = require('../Services/UserService.js');
+const UserService = require('..//services/user.services');
 
 const UserController = {
     getUsers: (req, res) =>{

@@ -1,4 +1,4 @@
-const CommentService = require('../Services/CommentService.js');
+const CommentService = require('../services/comment.services');
 const CommentController = {
     getComments: (req, res) => {
         CommentService.getDBComments().then( resultado =>{
