@@ -17,7 +17,7 @@ const CommentService = {
         });
     });
   },
-  apiGetCommentById: (id) =>{
+  apiGetCommentById(id) {
     return new Promise((resolve, reject) => {
       fetch(`${URL_API}/comment/${id}`)
         .then(response => response.json())
@@ -57,7 +57,7 @@ const CommentService = {
   },
   apiUpdateComment: (comment) => {
     return new Promise((resolve, reject) => {
-      fetch(`${URL_API}/comment/${comment.id}`, {
+      fetch(`${URL_API}/comment/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

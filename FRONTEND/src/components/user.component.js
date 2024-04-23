@@ -1,6 +1,6 @@
 import UserService from "../services/user.service.js";
 import LoginService from "../services/login.service.js";
-import { formatDate, randomColors } from "../utils.js";
+import { randomColors } from "../utils.js";
 import { loadComment } from "./comment.component.js";
 import MainView from '../view/main.view.js';
 
@@ -34,6 +34,7 @@ const displayUserData = (user) => {
     newDiv.innerHTML = `
     <div>
     <button id='btnMeusComentarios' class='btn-submit btn btn-dark my-2'>Meus Comentários</button>
+    <button id='btnEditarDados' class='btn-submit btn btn-dark my-2'>Editar Dados</button>
     </div>
     ${iconeUsuario(randomColors().dark)}
     <div class="row d-inline-flex text-body-secondary rounded">
@@ -65,7 +66,9 @@ const displayUserData = (user) => {
 
     const btnMeusComentarios = document.getElementById('btnMeusComentarios');
     btnMeusComentarios.addEventListener('click', handleMeusComentarios);
-
+    
+    const btnEditarDados = document.getElementById('btnEditarDados');
+    btnEditarDados.addEventListener('click', handleEditarDados);
 }
 
 const handleMeusComentarios = () => {
@@ -75,6 +78,12 @@ const handleMeusComentarios = () => {
     }).catch(error => {
         alert(error.message)
     })
+}
+
+const handleEditarDados = () => {
+    
+
+
 }
 
 const handleShowHideUser = () => {
@@ -93,13 +102,17 @@ const handleShowHideUser = () => {
     }
 }
 
+// const listenerToBtnMeusDados = () => {
+//     const btnMeusDados = document.getElementById('btnMeusDados');
+//         btnMeusDados.addEventListener('click', handleShowHideUser);
+// }
+
 const UserComponent = {
     run: () => {
-        const btnMeusDados = document.getElementById('btnMeusDados');
-        btnMeusDados.addEventListener('click', handleShowHideUser);
+        
         const btnSairMDados = document.getElementById('btnSairMDados');
         btnSairMDados.addEventListener('click', handleShowHideUser);
     }
 }
 
-export { UserComponent }
+export { UserComponent, handleShowHideUser }

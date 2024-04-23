@@ -3,19 +3,10 @@ const header = `
 <!-- HEADER -->
 <header>
      <!-- USER PROFILE -->
-    <div id="user-profile" class="flex-shrink-0 dropdown m-2 disabled">
-        <a id="user-profile-title" href="#" class="d-flex flex-row link-body-emphasis text-decoration-none " data-bs-toggle="dropdown"
-            aria-expanded="false">
-            
-        </a>
-        <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" href="#" id="btnMeusDados">Meus dados</a></li>
-            <li>
-                <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" id="btnSair" href="#">Sair</a></li>
-        </ul>
-    </div>
+     <div id="user-profile" class="disabled">
+        <div id="user-profile-title">
+        </div>
+     </div>
 </header>
 `
 
@@ -36,8 +27,7 @@ const main = `
         <div class="comments shadow disabled" id="form-comentario">
             <h3>Novo Comentário</h3>
             <form id="formComment">
-                <label for="autor">Autor</label>
-                <input type="text" name="autor" id="inputAuthor" readonly>
+                <div id="authorProfile"></div>
                 <label for="comentario">Digite seu comentário</label>
                 <textarea name="comentario" id="inputComment" cols="30" rows="10" required></textarea>
                 <button type="submit" class="btn-submit btn btn-dark my-2">Enviar</button>
