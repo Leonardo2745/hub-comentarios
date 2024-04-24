@@ -34,6 +34,7 @@ const displayUserData = (user) => {
     newDiv.innerHTML = `
     <div>
     <button id='btnMeusComentarios' class='btn-submit btn btn-dark my-2'>Meus Comentários</button>
+    
     <button id='btnEditarDados' class='btn-submit btn btn-dark my-2'>Editar Dados</button>
     </div>
     ${iconeUsuario(randomColors().dark)}
