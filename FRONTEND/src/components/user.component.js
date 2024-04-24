@@ -68,6 +68,7 @@ const displayUserData = (user) => {
     const btnMeusComentarios = document.getElementById('btnMeusComentarios');
     btnMeusComentarios.addEventListener('click', handleMeusComentarios);
     
+
     const btnEditarDados = document.getElementById('btnEditarDados');
     btnEditarDados.addEventListener('click', handleEditarDados);
 }
@@ -82,10 +83,13 @@ const handleMeusComentarios = () => {
 }
 
 const handleEditarDados = () => {
-    
+    const btnClick = document.getElementsByClassName('form-label')
 
-
+    if (btnClick ){
+        
+    }
 }
+
 
 const handleShowHideUser = () => {
     const userDataTag = document.getElementById('user-data');
