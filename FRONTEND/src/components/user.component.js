@@ -34,8 +34,6 @@ const displayUserData = (user) => {
     newDiv.innerHTML = `
     <div>
     <button id='btnMeusComentarios' class='btn-submit btn btn-dark my-2'>Meus Comentários</button>
-    
-    <button id='btnEditarDados' class='btn-submit btn btn-dark my-2'>Editar Dados</button>
     </div>
     ${iconeUsuario(randomColors().dark)}
     <div class="row d-inline-flex text-body-secondary rounded">
@@ -67,10 +65,7 @@ const displayUserData = (user) => {
 
     const btnMeusComentarios = document.getElementById('btnMeusComentarios');
     btnMeusComentarios.addEventListener('click', handleMeusComentarios);
-    
 
-    const btnEditarDados = document.getElementById('btnEditarDados');
-    btnEditarDados.addEventListener('click', handleEditarDados);
 }
 
 const handleMeusComentarios = () => {
@@ -81,15 +76,6 @@ const handleMeusComentarios = () => {
         alert(error.message)
     })
 }
-
-const handleEditarDados = () => {
-    const btnClick = document.getElementsByClassName('form-label')
-
-    if (btnClick ){
-        
-    }
-}
-
 
 const handleShowHideUser = () => {
     const userDataTag = document.getElementById('user-data');
