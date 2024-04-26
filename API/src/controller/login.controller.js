@@ -1,4 +1,5 @@
 const LoginService = require('../services/login.services')
+const jwt = require ('jsonwebtoken')
 
 const LoginController = {
     login: (req, res) =>{
@@ -13,6 +14,26 @@ const LoginController = {
     logout: (req, res) => {
         res.clearCookie('token');
         res.json({success: true, message: 'Logout concluído com sucesso'});
+    },
+    isAuthenticated: (req, res, next) => {
+        const auth = req.headers['authorization'];
+        if (auth && auth.startswith('Bearer ')){
+            const token = auth.split (' ')[1];
+;            if(token) {
+                Jwt.verify(token,process.env.JWT_SECRET, (err, decodedToken)=>{
+                    if(err){
+                        res.status(401).json({ error: err, message: "Token inválido"});
+                    } else {
+                        req.user = decodedToken;
+                        next()
+                    }
+    
+    
+                })
+            }
+
+
+        }
     }
 }
 

@@ -26,6 +26,10 @@ const CommentController = {
     ,
     addComment: (req, res) => {
         const comment = req.body;
+        const usr = req.user;
+        if(!(usr && usr.id === comment.userId)){
+            res.status(401).json({success: false, error: 'Você não tem a sensi'})
+        }
         CommentService.addDBNewComment(comment).then( () =>{
             res.json({success: true, message: 'Comentário adicionado com sucesso!'})
         }).catch(error => {
@@ -34,6 +38,10 @@ const CommentController = {
     },
     updateComment: (req, res) => {
         const comment = req.body;
+        const usr = req.user;
+        if(!(usr && usr.id === comment.userId)){
+            res.status(401).json({success: false, error: 'Você não tem a sensi'})
+        }
         CommentService.updateDBComment(comment).then( () =>{
             res.json({success: true, message: 'Comentário atualizado com sucesso!'})
         }).catch(error => {
@@ -42,11 +50,15 @@ const CommentController = {
     },
     deleteComment: (req, res) => {
         const id = req.params.id;
+        const usr = req.user;
+        if(!(usr && usr.id === comment.userId)){
+            res.status(401).json({success: false, error: 'Você não tem a sensi'})
+        }
         CommentService.deleteDBComment(id).then( () =>{
             res.json({success: true, message: 'Comentário deletado com sucesso!'})
         }).catch(error => {
             res.status(500).json({success: false, error: `Internal server error: ${error.message}`})
         });
-    },
+    }
 }
 module.exports = CommentController;
