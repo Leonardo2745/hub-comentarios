@@ -1,4 +1,4 @@
-import { mapComments } from "../models/comment.model.js";
+import { mapComments } from "../model/common.model.js";
 
 const URL_API = "http://localhost:7000";
 const URL_API_USER = "http://localhost:7000/user";

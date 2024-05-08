@@ -1,8 +1,8 @@
-import decodeJWT from '../../lib/decodeJWT.js';
-import { User } from "../models/user.model.js";
+import decodeJWT from '../lib/decodeJWT.js';
+import User  from "../model/user.model.js";
 const URL_API = "http://localhost:7000/session";
 
-const LoginService = {
+const AuthService = {
   apiAuthUser: (user) => {
     return new Promise((resolve, reject) => {
       fetch(`${URL_API}/login`, {
@@ -45,7 +45,8 @@ const LoginService = {
         return null;
       }
     }
-  }, updateSessionUserData(user) {
+  }, 
+  updateSessionUserData(user) {
     return new Promise((resolve, reject) => {
       const headers = {
         'Content-Type': 'application/json'
@@ -70,23 +71,23 @@ const LoginService = {
         });
     })
   },
-  isLoggedIn: () => {
-    const token = sessionStorage.getItem('token');
-    if (!token) {
-      return false;
-    }
-    try {
-      const tokenExpireTime = (decodeJWT(token).exp * 1000);
-      if (Date.now() >= tokenExpireTime) {
-        return false;
-      }
-      return true;
-    } catch (error) {
-      console.log(error);
-    }
-
+  isUserLoggedIn: () => {
+    // const token = sessionStorage.getItem('token');
+    // if (!token) {
+    //   return false;
+    // }
+    // try {
+    //   const tokenExpireTime = (decodeJWT(token).exp * 1000);
+    //   if (Date.now() >= tokenExpireTime) {
+    //     return false;
+    //   }
+    //   return true;
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    return true;
   },
-  logout: () => {
+  logoutUser: () => {
     return new Promise((resolve, reject) => {
       fetch(`${URL_API}/logout`, {
         method: 'POST',
@@ -109,4 +110,4 @@ const LoginService = {
   }
 };
 
-export default LoginService
+export default AuthService
